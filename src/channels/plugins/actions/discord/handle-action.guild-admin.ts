@@ -161,6 +161,9 @@ export async function tryHandleDiscordMessageActionGuildAdmin(params: {
       integer: true,
     });
     const nsfw = typeof actionParams.nsfw === "boolean" ? actionParams.nsfw : undefined;
+    const defaultAutoArchiveDuration = readNumberParam(actionParams, "defaultAutoArchiveDuration", {
+      integer: true,
+    });
     return await handleDiscordAction(
       {
         action: "channelCreate",
@@ -172,6 +175,7 @@ export async function tryHandleDiscordMessageActionGuildAdmin(params: {
         topic: topic ?? undefined,
         position: position ?? undefined,
         nsfw,
+        defaultAutoArchiveDuration,
       },
       cfg,
     );
@@ -196,6 +200,9 @@ export async function tryHandleDiscordMessageActionGuildAdmin(params: {
     const autoArchiveDuration = readNumberParam(actionParams, "autoArchiveDuration", {
       integer: true,
     });
+    const defaultAutoArchiveDuration = readNumberParam(actionParams, "defaultAutoArchiveDuration", {
+      integer: true,
+    });
     const availableTags = parseAvailableTags(actionParams.availableTags);
     return await handleDiscordAction(
       {
@@ -211,6 +218,7 @@ export async function tryHandleDiscordMessageActionGuildAdmin(params: {
         archived,
         locked,
         autoArchiveDuration: autoArchiveDuration ?? undefined,
+        defaultAutoArchiveDuration,
         availableTags,
       },
       cfg,
