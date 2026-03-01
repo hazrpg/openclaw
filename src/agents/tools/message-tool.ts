@@ -382,11 +382,11 @@ function buildChannelManagementSchema() {
     position: Type.Optional(Type.Number()),
     nsfw: Type.Optional(Type.Boolean()),
     rateLimitPerUser: Type.Optional(Type.Number()),
-    autoArchiveDuration: optionalStringEnum("60", "1440", "4320", "10080", {
+    autoArchiveDuration: optionalStringEnum(["60", "1440", "4320", "10080"], {
       description:
         "The duration in minutes to automatically archive the thread after recent activity.",
     }),
-    defaultAutoArchiveDuration: optionalStringEnum("60", "1440", "4320", "10080", {
+    defaultAutoArchiveDuration: optionalStringEnum(["60", "1440", "4320", "10080"], {
       description: "Default duration, in minutes, for threads in this channel to stay active.",
     }),
     categoryId: Type.Optional(Type.String()),
