@@ -70,13 +70,18 @@ export function registerMessageDiscordAdminCommands(message: Command, helpers: M
     .option("--topic <text>", "Channel topic")
     .option("--position <n>", "Channel position")
     .option("--nsfw", "Mark as NSFW")
-    .option("--default-auto-archive-duration <n>", "Default auto-archive duration (60, 1440, 4320, 10080)")
+    .option(
+      "--default-auto-archive-duration <n>",
+      "Default auto-archive duration (60, 1440, 4320, 10080)",
+    )
     .action(async (opts) => {
       await helpers.runMessageAction("channel-create", opts);
     });
 
   helpers
-    .withMessageBase(helpers.withRequiredMessageTarget(channel.command("edit").description("Edit a channel")))
+    .withMessageBase(
+      helpers.withRequiredMessageTarget(channel.command("edit").description("Edit a channel")),
+    )
     .option("--name <text>", "Channel name")
     .option("--topic <text>", "Channel topic")
     .option("--position <n>", "Channel position")
@@ -87,13 +92,18 @@ export function registerMessageDiscordAdminCommands(message: Command, helpers: M
     .option("--archived", "Archive thread")
     .option("--locked", "Lock thread")
     .option("--auto-archive-duration <n>", "Auto-archive duration (60, 1440, 4320, 10080)")
-    .option("--default-auto-archive-duration <n>", "Default auto-archive duration (60, 1440, 4320, 10080)")
+    .option(
+      "--default-auto-archive-duration <n>",
+      "Default auto-archive duration (60, 1440, 4320, 10080)",
+    )
     .action(async (opts) => {
       await helpers.runMessageAction("channel-edit", opts);
     });
 
   helpers
-    .withMessageBase(helpers.withRequiredMessageTarget(channel.command("delete").description("Delete a channel")))
+    .withMessageBase(
+      helpers.withRequiredMessageTarget(channel.command("delete").description("Delete a channel")),
+    )
     .action(async (opts) => {
       await helpers.runMessageAction("channel-delete", opts);
     });
